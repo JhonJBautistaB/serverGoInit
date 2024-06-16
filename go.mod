@@ -1,4 +1,4 @@
-module golangMSWorkingChi
+module serverGoInit
 
 go 1.22.1
 

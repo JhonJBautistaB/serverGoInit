@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"golangMSWorkingChi/cmd/routes"
+	"serverGoInit/cmd/routes"
 )
 
 type Server struct {
