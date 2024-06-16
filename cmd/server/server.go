@@ -3,6 +3,8 @@ package server
 import (
 	"log"
 	"net/http"
+
+	"golangMSWorkingChi/cmd/routes"
 )
 
 type Server struct {
@@ -20,9 +22,10 @@ func NewServer(port string, nameServer string) *Server {
 
 // created method init server
 func (s *Server) StartServer() error {
+	rts := routes.Routes{}
 	srv := &http.Server{
 		Addr:    ":" + s.Port,
-		Handler: nil,
+		Handler: rts.Routes(),
 	}
 
 	log.Printf("Server %s running on port %s", s.NameServer, s.Port)

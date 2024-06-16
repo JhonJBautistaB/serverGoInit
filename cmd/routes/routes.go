@@ -9,7 +9,9 @@ import (
 	"github.com/go-chi/cors"
 )
 
-func routes() http.Handler {
+type Routes struct{}
+
+func (r *Routes) Routes() http.Handler {
 	mux := chi.NewRouter()
 
 	// especify CORS
@@ -25,8 +27,19 @@ func routes() http.Handler {
 	// especify Middleware
 	mux.Use(middleware.Heartbeat("/ping"))
 
-	mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Welcome to the API"))
+	//Version API
+	mux.Route("/v1", func(mux chi.Router) {
+		// routes API
+		mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Write([]byte("Welcome to the API V1"))
+		})
+	})
+
+	mux.Route("/v2", func(mux chi.Router) {
+		// routes API
+		mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Write([]byte("Welcome to the API V2"))
+		})
 	})
 
 	return mux

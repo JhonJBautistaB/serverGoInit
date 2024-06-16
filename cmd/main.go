@@ -1,8 +1,8 @@
 package main
 
 import (
+	"golangMSWorkingChi/cmd/server"
 	"golangMSWorkingChi/config"
-	"golangMSWorkingChi/server"
 )
 
 func main() {
